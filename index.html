@@ -2,166 +2,223 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Stark im Netz</title>
+
 <style>
 *{box-sizing:border-box}
+
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#050914;
-color:white;
-min-height:100vh;
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:white;
+  min-height:100vh;
+  background:linear-gradient(135deg,#06101d,#102c42,#25152f);
 }
+
 header{
-padding:20px 6%;
-background:#081322;
-border-bottom:1px solid #ffffff18;
-display:flex;
-justify-content:space-between;
+  padding:20px 6%;
+  display:flex;
+  justify-content:space-between;
+  border-bottom:1px solid #ffffff20;
+  background:#050b14;
 }
-.logo{font-weight:900;letter-spacing:3px;color:#61e7ff}
-main{max-width:950px;margin:40px auto;padding:20px}
+
+.logo{
+  color:#62e7ff;
+  font-weight:bold;
+  letter-spacing:3px;
+}
+
+#progress{color:#9db0c2}
+
+main{
+  width:min(900px,92%);
+  margin:35px auto;
+}
+
+.card{
+  background:#0c1b2b;
+  border:1px solid #ffffff18;
+  border-radius:24px;
+  padding:35px;
+  box-shadow:0 20px 60px #0008;
+}
+
 .screen{display:none}
 .active{display:block}
-.card{
-background:#0d1b2d;
-border:1px solid #ffffff15;
-border-radius:22px;
-padding:35px;
-box-shadow:0 20px 70px #0008;
+
+.start{
+  text-align:center;
+  padding:70px 30px;
 }
-.start{text-align:center;padding:80px 30px}
+
+.start h1{
+  font-size:clamp(55px,10vw,95px);
+  line-height:.9;
+  margin:20px 0;
+}
+
+.start h1 span{color:#62e7ff}
+
 .tag{
-color:#ff65c7;
-font-size:11px;
-font-weight:bold;
-letter-spacing:3px;
+  color:#ff66c8;
+  font-size:12px;
+  letter-spacing:3px;
+  font-weight:bold;
 }
-h1{
-font-size:clamp(50px,10vw,100px);
-line-height:.9;
-margin:20px 0;
+
+p{
+  color:#b5c4d2;
+  line-height:1.6;
 }
-h1 span{color:#61e7ff}
-p{color:#a9b9ca;line-height:1.7}
-.start-button{
-margin-top:25px;
-padding:16px 25px;
-border:0;
-border-radius:12px;
-background:#61e7ff;
-color:#031018;
-font-weight:900;
-cursor:pointer;
+
+button{
+  font-family:inherit;
+  cursor:pointer;
 }
+
+.startButton{
+  margin-top:20px;
+  padding:16px 28px;
+  border:0;
+  border-radius:12px;
+  background:#62e7ff;
+  color:#031019;
+  font-weight:bold;
+  font-size:15px;
+}
+
+.startButton:hover{transform:scale(1.03)}
+
 .profile{
-display:flex;
-align-items:center;
-gap:14px;
-background:#07111e;
-padding:14px;
-border-radius:15px;
+  display:flex;
+  gap:14px;
+  align-items:center;
+  background:#071321;
+  padding:15px;
+  border-radius:14px;
 }
+
 .avatar{
-width:52px;
-height:52px;
-border-radius:50%;
-display:grid;
-place-items:center;
-background:#285b75;
-font-weight:900;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  font-weight:bold;
+  background:linear-gradient(135deg,#28728b,#773b70);
 }
-.muted{color:#8fa4ba;font-size:12px}
+
+.muted{
+  color:#8fa5b8;
+  font-size:12px;
+}
+
 .post{
-background:#101f32;
-padding:20px;
-border-radius:17px;
-margin:20px 0;
+  margin:25px 0;
+  padding:22px;
+  background:#102237;
+  border-radius:16px;
 }
-.post-text{
-font-size:18px;
-line-height:1.6;
+
+.postText{
+  color:white;
+  font-size:18px;
 }
+
 .comment{
-background:#091523;
-padding:12px;
-border-radius:10px;
-margin-top:9px;
-border-left:3px solid #ff6587;
+  background:#091522;
+  padding:12px;
+  margin-top:9px;
+  border-radius:10px;
+  border-left:3px solid #ff6687;
 }
+
 .answers{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-margin-top:15px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:15px;
 }
+
 .answer{
-min-height:110px;
-padding:17px;
-border-radius:13px;
-border:1px solid #ffffff16;
-background:#14283d;
-color:white;
-text-align:left;
-cursor:pointer;
+  padding:18px;
+  min-height:115px;
+  text-align:left;
+  color:white;
+  background:#142c43;
+  border:1px solid #ffffff18;
+  border-radius:14px;
 }
+
 .answer:hover{
-background:#193650;
-border-color:#61e7ff66;
+  background:#1b3b58;
+  border-color:#62e7ff88;
 }
+
 .answer strong{
-display:block;
-margin-bottom:8px;
+  display:block;
+  margin-bottom:9px;
 }
+
 .answer small{
-color:#a9b9ca;
-line-height:1.5;
+  color:#afc0d0;
+  line-height:1.5;
 }
+
 .feedback{
-margin-top:16px;
-padding:15px;
-border-radius:12px;
-display:none;
+  display:none;
+  margin-top:18px;
+  padding:15px;
+  border-radius:12px;
 }
+
 .good{
-display:block;
-background:#0b332c;
-color:#b9fff0;
+  display:block;
+  background:#0c3931;
+  color:#bafff1;
 }
+
 .bad{
-display:block;
-background:#421925;
-color:#ffd1dc;
+  display:block;
+  background:#451b28;
+  color:#ffd1db;
 }
+
 .stats{
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-margin-top:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:22px;
 }
+
 .stat{
-background:#07111e;
-padding:9px 12px;
-border-radius:9px;
-font-size:12px;
+  background:#071321;
+  padding:9px 13px;
+  border-radius:9px;
+  font-size:12px;
 }
-.stat b{color:#61e7ff}
+
+.stat b{color:#62e7ff}
+
 .end{
-text-align:center;
-padding:60px 30px;
+  text-align:center;
+  padding:65px 25px;
 }
+
 .badge{
-display:inline-block;
-padding:10px 16px;
-border-radius:999px;
-background:#123c3a;
-color:#8ffff0;
-font-weight:bold;
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:30px;
+  background:#123d39;
+  color:#9ffff1;
+  font-weight:bold;
 }
-@media(max-width:700px){
-.answers{grid-template-columns:1fr}
-.card{padding:22px}
+
+@media(max-width:650px){
+  .answers{grid-template-columns:1fr}
+  .card{padding:22px}
 }
 </style>
 </head>
@@ -169,109 +226,83 @@ font-weight:bold;
 <body>
 
 <header>
-<div class="logo">NETZSTARK</div>
-<div id="progress" class="muted">Start</div>
+  <div class="logo">NETZSTARK</div>
+  <div id="progress">Start</div>
 </header>
 
 <main>
 
-<section id="start" class="screen active card start">
+<section id="startScreen" class="screen active card start">
+  <div class="tag">INTERAKTIVES SPIEL</div>
 
-<div class="tag">INTERAKTIVES CYBERMOBBING-SPIEL</div>
+  <h1>
+    STARK<br>
+    <span>IM NETZ.</span>
+  </h1>
 
-<h1>
-STARK<br>
-<span>IM NETZ.</span>
-</h1>
+  <p>
+    Jede Runde ist anders.<br>
+    Deine Entscheidungen verändern den Verlauf.
+  </p>
 
-<p>
-Du begleitest Mia durch schwierige Situationen im Internet.
-Deine Entscheidungen verändern Vertrauen, Sicherheit,
-Beweise und die Eskalation.
-</p>
+  <button class="startButton" onclick="startGame()">
+    SPIEL STARTEN
+  </button>
+</section>
 
-<button class="start-button" onclick="startGame()">
-SPIEL STARTEN
-</button>
+
+<section id="gameScreen" class="screen card">
+
+  <div class="profile">
+    <div class="avatar">M</div>
+
+    <div>
+      <strong>Mia, 14</strong>
+      <div class="muted">gerade eben</div>
+    </div>
+  </div>
+
+  <h2 id="title"></h2>
+
+  <div class="post">
+    <div id="channel" class="muted"></div>
+
+    <p id="text" class="postText"></p>
+
+    <div id="comments"></div>
+  </div>
+
+  <strong>Was machst du?</strong>
+
+  <div id="answers" class="answers"></div>
+
+  <div id="feedback" class="feedback"></div>
+
+  <div class="stats">
+    <div class="stat">Vertrauen: <b id="trust">0</b></div>
+    <div class="stat">Sicherheit: <b id="safety">0</b></div>
+    <div class="stat">Beweise: <b id="evidence">0</b></div>
+    <div class="stat">Eskalation: <b id="escalation">0</b></div>
+  </div>
 
 </section>
 
 
-<section id="game" class="screen card">
+<section id="endScreen" class="screen card end">
 
-<div class="profile">
+  <div class="tag">RUNDE BEENDET</div>
 
-<div class="avatar">M</div>
+  <h2 id="endTitle"></h2>
 
-<div>
-<strong>Mia, 14</strong>
-<div class="muted">
-Privater Chat · gerade eben
-</div>
-</div>
+  <p id="endText"></p>
 
-</div>
+  <div id="badge" class="badge"></div>
 
-<h2 id="sceneTitle"></h2>
+  <br><br>
 
-<div class="post">
-
-<div id="channel" class="muted"></div>
-
-<p id="sceneText" class="post-text"></p>
-
-<div id="comments"></div>
-
-</div>
-
-<strong>Was machst du?</strong>
-
-<div id="answers" class="answers"></div>
-
-<div id="feedback" class="feedback"></div>
-
-<div class="stats">
-
-<div class="stat">
-Vertrauen:
-<b id="trust">0</b>
-</div>
-
-<div class="stat">
-Sicherheit:
-<b id="safety">0</b>
-</div>
-
-<div class="stat">
-Beweise:
-<b id="evidence">0</b>
-</div>
-
-<div class="stat">
-Eskalation:
-<b id="escalation">0</b>
-</div>
-
-</div>
-
-</section>
-
-
-<section id="end" class="screen card end">
-
-<div class="tag">GESCHICHTE BEENDET</div>
-
-<h2 id="endTitle"></h2>
-
-<p id="endText"></p>
-
-<div id="badge" class="badge"></div>
-
-<br><br>
-
-<button class="start-button" onclick="location.reload()">
-NOCHMAL SPIELEN
-</button>
+  <button class="startButton" onclick="newGame()">
+    NEUE RUNDE
+  </button>
 
 </section>
 
@@ -280,390 +311,330 @@ NOCHMAL SPIELEN
 
 <script>
 
-const scenes = [
+const situations=[
 
 {
-title:"Das Foto",
-channel:"KLASSENCHAT",
-text:"Jemand stellt ohne Mias Zustimmung ein peinliches Foto in den Klassenchat. Kurz darauf wird es weitergeleitet. Mia schreibt dir: „Bitte hilf mir.“",
-
-comments:[
-["Tom","Das muss jeder sehen 😂"],
-["Mia","Bitte schick das Foto nicht weiter."]
-],
-
-answers:[
-
-[
-"Mia zuerst zuhören",
-"Du fragst Mia, was sie selbst möchte.",
-3,2,0,0,
-"Mia merkt, dass sie nicht allein ist."
-],
-
-[
-"Beweise sichern",
-"Du dokumentierst den Beitrag, ohne das Foto weiterzuverbreiten.",
-1,2,3,0,
-"Die Dokumentation kann später wichtig sein."
-],
-
-[
-"Beitrag melden",
-"Du nutzt die Meldefunktion der Plattform.",
-1,3,1,0,
-"Du nutzt einen vorgesehenen Schutzweg."
-],
-
-[
-"Öffentlich zurückschlagen",
-"Du beleidigst die anderen im Klassenchat.",
-0,-1,0,3,
-"Der Konflikt eskaliert."
-]
-
-]
+ title:"Das Foto",
+ channel:"KLASSENCHAT",
+ text:"Jemand stellt ohne Mias Zustimmung ein peinliches Foto in den Klassenchat.",
+ comments:["Tom: Das muss jeder sehen 😂","Mia: Bitte schick das Foto nicht weiter."],
+ answers:[
+  ["Mia unterstützen","Du fragst Mia, was sie möchte.",4,4,0,0,"Mia merkt, dass sie nicht allein ist."],
+  ["Beweise sichern","Du dokumentierst den Beitrag.",1,3,4,0,"Die Dokumentation kann später helfen."],
+  ["Melden","Du meldest den Beitrag.",1,5,2,0,"Du nutzt einen Schutzweg."],
+  ["Zurückbeleidigen","Du beleidigst die anderen.",0,-3,0,5,"Der Konflikt wird größer."]
+ ]
 },
 
 {
-title:"Der Fake-Account",
-channel:"SOCIAL MEDIA",
-text:"Ein Fake-Profil benutzt Mias Namen und Foto und verbreitet erfundene Geschichten über sie.",
-
-comments:[
-["FakeMia","Niemand mag Mia wirklich."],
-["Jonas","Sieht ziemlich echt aus."]
-],
-
-answers:[
-
-[
-"Mia fragen",
-"Du fragst, welche Hilfe sie möchte.",
-4,2,1,0,
-"Mia bekommt Kontrolle über die nächsten Schritte."
-],
-
-[
-"Profil dokumentieren und melden",
-"Du sicherst die Inhalte und meldest das Profil.",
-2,3,3,0,
-"Beweise und Melden wirken zusammen."
-],
-
-[
-"Account hacken",
-"Du versuchst, den Account selbst zu übernehmen.",
-0,-2,-1,2,
-"Das schafft neue Probleme."
-],
-
-[
-"Account öffentlich bloßstellen",
-"Du veröffentlichst den Namen des vermeintlichen Täters.",
-0,-1,0,3,
-"Die Situation wird noch öffentlicher."
-]
-
-]
+ title:"Der Fake-Account",
+ channel:"SOCIAL MEDIA",
+ text:"Ein Fake-Profil benutzt Mias Namen und Foto und verbreitet erfundene Geschichten.",
+ comments:["FakeMia: Niemand mag Mia wirklich.","Jonas: Sieht ziemlich echt aus."],
+ answers:[
+  ["Profil melden","Du sicherst Informationen und meldest das Profil.",2,5,3,0,"Das Profil wird gemeldet."],
+  ["Mia fragen","Du fragst Mia, welche Hilfe sie möchte.",5,3,0,0,"Mia bekommt Kontrolle."],
+  ["Account hacken","Du versuchst den Account zu übernehmen.",0,-4,0,5,"Das schafft neue Probleme."],
+  ["Öffentlich bloßstellen","Du stellst die Person öffentlich bloß.",0,-3,0,5,"Der Konflikt eskaliert."]
+ ]
 },
 
 {
-title:"Die Drohung",
-channel:"PRIVATNACHRICHT",
-text:"Ein unbekannter Account schreibt Mia: „Wenn du jemanden informierst, posten wir noch mehr über dich.“",
-
-comments:[
-["Unknown","Du weißt, was passiert, wenn du redest."],
-["Mia","Bitte bleib bei mir."]
-],
-
-answers:[
-
-[
-"Nachricht sichern und Hilfe holen",
-"Du sicherst die Drohung und holst Unterstützung.",
-4,5,3,0,
-"Mia bekommt Hilfe und die Drohung bleibt dokumentiert."
-],
-
-[
-"Zurückdrohen",
-"Du drohst dem Absender mit Rache.",
-0,-2,0,4,
-"Die Situation kann dadurch gefährlicher werden."
-],
-
-[
-"Alles löschen",
-"Du löschst die Nachrichten.",
-1,-1,-3,0,
-"Wichtige Beweise können verloren gehen."
-],
-
-[
-"Blockieren und melden",
-"Du sicherst zuerst die Nachricht und hilfst beim Blockieren.",
-3,4,3,0,
-"Du kombinierst Schutz, Beweise und Meldung."
-]
-
-]
+ title:"Die Drohung",
+ channel:"PRIVATNACHRICHT",
+ text:"Ein unbekannter Account schreibt Mia: Wenn du jemanden informierst, posten wir noch mehr.",
+ comments:["Unknown: Du weißt, was passiert.","Mia: Bitte bleib bei mir."],
+ answers:[
+  ["Nachricht sichern","Du sicherst die Nachricht und holst Hilfe.",4,5,4,0,"Die Drohung ist dokumentiert."],
+  ["Blockieren und melden","Du sicherst die Nachricht und meldest den Account.",3,5,3,0,"Du kombinierst mehrere Schutzmaßnahmen."],
+  ["Zurückdrohen","Du drohst dem Absender.",0,-3,0,5,"Die Situation kann gefährlicher werden."],
+  ["Alles löschen","Du löschst die Nachrichten.",1,-2,-4,0,"Wichtige Beweise gehen verloren."]
+ ]
 },
 
 {
-title:"Der Wendepunkt",
-channel:"SCHULHOF",
-text:"Mia möchte, dass die Angriffe aufhören. Zwei Freunde wollen helfen.",
+ title:"Das Gerücht",
+ channel:"SCHULCHAT",
+ text:"Im Klassenchat verbreitet sich ein Gerücht über Mia.",
+ comments:["Lena: Stimmt das wirklich?","Mia: Nein. Das ist erfunden."],
+ answers:[
+  ["Mia glauben","Du hörst Mia zu und unterstützt sie.",5,3,0,0,"Mia fühlt sich ernst genommen."],
+  ["Nach Beweisen fragen","Du verbreitest nichts weiter und fragst nach Fakten.",2,3,2,0,"Du bremst das Gerücht."],
+  ["Vertrauensperson informieren","Du holst Unterstützung.",4,5,2,0,"Mia bekommt zusätzliche Hilfe."],
+  ["Gerücht weiterleiten","Du leitest es weiter.",0,-4,0,5,"Das Gerücht erreicht noch mehr Menschen."]
+ ]
+},
 
-comments:[
-["Mia","Ich möchte wieder normal online sein können."],
-["Freund","Wir können gemeinsam Hilfe holen."]
-],
+{
+ title:"Das Video",
+ channel:"VIDEO-CHAT",
+ text:"Ein Mitschüler kündigt an, ein peinliches Video von Mia hochzuladen.",
+ comments:["Tom: Das wird viral.","Mia: Ich will das nicht."],
+ answers:[
+  ["Video dokumentieren","Du sicherst Informationen.",2,3,4,0,"Du hast wichtige Informationen gesichert."],
+  ["Mia zuhören","Du fragst Mia, welche Unterstützung sie möchte.",5,3,0,0,"Du gibst Mia Kontrolle."],
+  ["Melden","Du meldest den Inhalt.",2,5,2,0,"Du nutzt einen Schutzweg."],
+  ["Video verbreiten","Du schickst es an andere.",0,-5,0,6,"Du vergrößerst den Schaden."]
+ ]
+},
 
-answers:[
+{
+ title:"Der Ausschluss",
+ channel:"GRUPPENCHAT",
+ text:"Mia wird absichtlich aus mehreren Gruppenchats entfernt.",
+ comments:["Ben: Mia ist raus 😂","Mia: Warum macht ihr das?"],
+ answers:[
+  ["Mia kontaktieren","Du fragst privat, wie es ihr geht.",5,3,0,0,"Mia bekommt Unterstützung."],
+  ["Freunde einbeziehen","Du suchst Menschen, die Mia unterstützen.",4,4,0,0,"Gemeinsam seid ihr stärker."],
+  ["Vertrauensperson holen","Du holst zusätzliche Hilfe.",4,5,2,0,"Eine weitere Person kann helfen."],
+  ["Mitmachen","Du machst dich ebenfalls über Mia lustig.",0,-5,0,6,"Du verstärkst den Ausschluss."]
+ ]
+},
 
-[
-"Gemeinsamen Schutzplan machen",
-"Ihr sichert Beweise, meldet Inhalte und holt Unterstützung.",
-5,5,3,0,
-"Ihr unterbrecht den Kreislauf gemeinsam."
-],
+{
+ title:"Die Kommentare",
+ channel:"SOCIAL MEDIA",
+ text:"Unter Mias Beitrag tauchen plötzlich viele beleidigende Kommentare auf.",
+ comments:["User123: Lösch deinen Account.","Mia: Ich verstehe das nicht."],
+ answers:[
+  ["Kommentare melden","Du meldest die beleidigenden Kommentare.",2,5,2,0,"Die Plattform bekommt Hinweise."],
+  ["Screenshots sichern","Du dokumentierst die Kommentare.",1,3,4,0,"Die Situation ist dokumentiert."],
+  ["Mia beruhigen","Du bleibst bei Mia und hörst ihr zu.",5,3,0,0,"Unterstützung ist wichtig."],
+  ["Zurückbeleidigen","Du antwortest mit Beleidigungen.",0,-4,0,6,"Der Konflikt wird weiter angeheizt."]
+ ]
+},
 
-[
-"Rachekampagne starten",
-"Ihr wollt die Angreifer genauso öffentlich fertig machen.",
-0,-3,1,5,
-"Rache verlängert den Konflikt."
-],
-
-[
-"Mia entscheiden lassen",
-"Ihr zeigt ihr Möglichkeiten und respektiert ihre Entscheidung.",
-5,4,2,0,
-"Du unterstützt Mia, ohne über sie hinwegzuentscheiden."
-],
-
-[
-"Vertrauensperson einschalten",
-"Ihr bittet eine geeignete Vertrauensperson um Hilfe.",
-4,5,3,0,
-"Die Verantwortung wird auf mehrere Menschen verteilt."
-]
-
-]
+{
+ title:"Der Wendepunkt",
+ channel:"SCHULE",
+ text:"Mia möchte, dass die Angriffe endlich aufhören. Ihr könnt gemeinsam einen Plan machen.",
+ comments:["Mia: Ich möchte wieder normal online sein.","Freund: Wir können Hilfe holen."],
+ answers:[
+  ["Schutzplan erstellen","Ihr sammelt Beweise, meldet Inhalte und holt Hilfe.",5,5,4,0,"Ihr handelt gemeinsam und sicher."],
+  ["Mia entscheiden lassen","Ihr zeigt Mia Möglichkeiten und respektiert ihre Entscheidung.",5,4,2,0,"Mia behält die Kontrolle."],
+  ["Vertrauensperson einschalten","Ihr bittet eine geeignete Person um Hilfe.",4,5,3,0,"Die Verantwortung wird geteilt."],
+  ["Rache starten","Ihr wollt die Angreifer öffentlich fertig machen.",0,-5,1,7,"Rache verlängert den Konflikt."]
+ ]
 }
 
 ];
 
 
+let round=[];
 let current=0;
+
 let trust=0;
 let safety=0;
 let evidence=0;
 let escalation=0;
+
 let locked=false;
+
+
+function shuffle(array){
+
+ let a=[...array];
+
+ for(let i=a.length-1;i>0;i--){
+
+   let j=Math.floor(Math.random()*(i+1));
+
+   [a[i],a[j]]=[a[j],a[i]];
+ }
+
+ return a;
+}
 
 
 function startGame(){
 
-document.getElementById("start")
-.classList.remove("active");
+ round=shuffle(situations).slice(0,5).map(s=>({
+   ...s,
+   answers:shuffle(s.answers)
+ }));
 
-document.getElementById("game")
-.classList.add("active");
+ current=0;
 
-showScene();
+ trust=0;
+ safety=0;
+ evidence=0;
+ escalation=0;
 
+ show("gameScreen");
+
+ showQuestion();
 }
 
 
-function showScene(){
-
-locked=false;
-
-const scene=scenes[current];
-
-document.getElementById("progress").textContent=
-"Situation "+(current+1)+" / "+scenes.length;
-
-document.getElementById("sceneTitle").textContent=
-scene.title;
-
-document.getElementById("channel").textContent=
-scene.channel;
-
-document.getElementById("sceneText").textContent=
-scene.text;
+function newGame(){
+ startGame();
+}
 
 
-const comments=document.getElementById("comments");
+function show(id){
 
-comments.innerHTML="";
+ document.querySelectorAll(".screen")
+ .forEach(x=>x.classList.remove("active"));
 
-scene.comments.forEach(function(comment){
-
-const div=document.createElement("div");
-
-div.className="comment";
-
-div.innerHTML=
-"<strong>"+comment[0]+
-"</strong><br><span class='muted'>"+
-comment[1]+"</span>";
-
-comments.appendChild(div);
-
-});
+ document.getElementById(id)
+ .classList.add("active");
+}
 
 
-const answers=document.getElementById("answers");
+function showQuestion(){
 
-answers.innerHTML="";
+ locked=false;
 
-scene.answers.forEach(function(answer,index){
+ const s=round[current];
 
-const button=document.createElement("button");
+ document.getElementById("progress").textContent=
+ "Situation "+(current+1)+" / "+round.length;
 
-button.className="answer";
+ document.getElementById("title").textContent=s.title;
 
-button.innerHTML=
-"<strong>"+answer[0]+
-"</strong><small>"+
-answer[1]+"</small>";
+ document.getElementById("channel").textContent=s.channel;
 
-button.onclick=function(){
-choose(index);
-};
-
-answers.appendChild(button);
-
-});
+ document.getElementById("text").textContent=s.text;
 
 
-document.getElementById("feedback")
-.style.display="none";
+ const comments=document.getElementById("comments");
 
-updateStats();
+ comments.innerHTML="";
 
+ s.comments.forEach(c=>{
+
+   const div=document.createElement("div");
+
+   div.className="comment";
+   div.textContent=c;
+
+   comments.appendChild(div);
+ });
+
+
+ const answers=document.getElementById("answers");
+
+ answers.innerHTML="";
+
+
+ s.answers.forEach((a,index)=>{
+
+   const button=document.createElement("button");
+
+   button.className="answer";
+
+   button.innerHTML=
+   "<strong>"+a[0]+"</strong>"+
+   "<small>"+a[1]+"</small>";
+
+   button.onclick=()=>choose(index);
+
+   answers.appendChild(button);
+
+ });
+
+
+ const feedback=document.getElementById("feedback");
+
+ feedback.style.display="none";
+ feedback.className="feedback";
+
+ updateStats();
 }
 
 
 function choose(index){
 
-if(locked)return;
+ if(locked)return;
 
-locked=true;
+ locked=true;
 
-const answer=scenes[current].answers[index];
+ const a=round[current].answers[index];
 
-trust+=answer[2];
-safety+=answer[3];
-evidence+=answer[4];
-escalation+=answer[5];
+ trust+=a[2];
+ safety+=a[3];
+ evidence+=a[4];
+ escalation+=a[5];
 
-updateStats();
+ updateStats();
 
-const feedback=document.getElementById("feedback");
+ const feedback=document.getElementById("feedback");
 
-feedback.textContent=answer[6];
+ feedback.textContent=a[6];
 
-const score=
-answer[2]+answer[3]+answer[4]-answer[5];
+ const score=a[2]+a[3]+a[4]-a[5];
 
-feedback.className=
-score>=4
-?"feedback good"
-:"feedback bad";
+ feedback.className=
+ score>=4 ? "feedback good" : "feedback bad";
 
-feedback.style.display="block";
+ feedback.style.display="block";
 
 
-setTimeout(function(){
+ setTimeout(()=>{
 
-current++;
+   current++;
 
-if(current<scenes.length){
+   if(current<round.length){
 
-showScene();
+     showQuestion();
 
-}else{
+   }else{
 
-finishGame();
+     finishGame();
+   }
 
-}
-
-},1800);
-
+ },1400);
 }
 
 
 function updateStats(){
 
-document.getElementById("trust").textContent=trust;
-document.getElementById("safety").textContent=safety;
-document.getElementById("evidence").textContent=evidence;
-document.getElementById("escalation").textContent=escalation;
-
+ document.getElementById("trust").textContent=trust;
+ document.getElementById("safety").textContent=safety;
+ document.getElementById("evidence").textContent=evidence;
+ document.getElementById("escalation").textContent=escalation;
 }
 
 
 function finishGame(){
 
-document.getElementById("game")
-.classList.remove("active");
+ show("endScreen");
 
-document.getElementById("end")
-.classList.add("active");
-
-let title;
-let text;
-let badge;
+ let title;
+ let text;
+ let badge;
 
 
-if(
-safety>=13 &&
-trust>=12 &&
-escalation<=2
-){
+ if(safety>=16 && trust>=13 && escalation<=3){
 
-title="MIA IST NICHT ALLEIN";
+   title="NETZHELD";
+   text="Du hast Mia konsequent unterstützt und sichere Entscheidungen getroffen.";
+   badge="NETZHELD";
 
-text=
-"Du hast Mia unterstützt, Sicherheit aufgebaut und den Konflikt nicht weiter angeheizt.";
+ }else if(escalation>=10){
 
-badge="NETZHELD";
+   title="KONFLIKT ESKALIERT";
+   text="Einige Entscheidungen haben den Konflikt deutlich verschärft.";
+   badge="NOCHMAL VERSUCHEN";
 
-}
+ }else if(safety>=11){
 
-else if(escalation>=7){
+   title="STARK IM NETZ";
+   text="Du hast viele gute und sichere Entscheidungen getroffen.";
+   badge="STARK IM NETZ";
 
-title="DER KONFLIKT ESKALIERT";
+ }else{
 
-text=
-"Mehrere Entscheidungen haben die Situation verschärft. Rache kann Cybermobbing weiter antreiben.";
-
-badge="AUS FEHLERN LERNEN";
-
-}
-
-else{
-
-title="STARK IM NETZ";
-
-text=
-"Du hast mehrere gute Entscheidungen getroffen. Mit noch mehr Unterstützung und Sicherheit wäre Mia noch besser geschützt gewesen.";
-
-badge="STARK IM NETZ";
-
-}
+   title="NOCH NICHT AM ZIEL";
+   text="Du kannst in der nächsten Runde andere Entscheidungen ausprobieren.";
+   badge="WEITER ÜBEN";
+ }
 
 
-document.getElementById("endTitle").textContent=title;
-document.getElementById("endText").textContent=text;
-document.getElementById("badge").textContent=badge;
-document.getElementById("progress").textContent="Abgeschlossen";
-
+ document.getElementById("endTitle").textContent=title;
+ document.getElementById("endText").textContent=text;
+ document.getElementById("badge").textContent=badge;
+ document.getElementById("progress").textContent="Runde beendet";
 }
 
 </script>
